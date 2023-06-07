@@ -26,7 +26,7 @@ ggplot(davisdata, aes(x = Seat, y = alcohol)) +
   theme(plot.title = element_text(hjust = 0.5))
 ```
 
-
+This box plot illustrates the distribution of alcohol across different seating locations represented by the "seat" variable in the data set. Each box represents the interquartile range (IQR) of alcohol consumption within each set, with a horizontal line inside denoting the median value. By visually taking an observation of the box plot, we can observe any apparent differences in alcohol consumption among the different seating locations provided
   
 
 
@@ -42,6 +42,41 @@ There is a significant difference. The Back row drinks an average of 9.625000 ou
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+```{r}
+# Load the necessary library
+library(stats)
+
+# Perform ANOVA test
+anova_result <- aov(alcohol ~ Seat, data = davisdata)
+
+# Check the ANOVA table
+summary(anova_result)
+```
+
+```{r}
+# Perform Tukey HSD test
+tukey_result <- TukeyHSD(anova_result)
+
+# Print the results
+print(tukey_result)
+```
+
+Based on both the ANOVA and Tukey's HSD test results, there are significant differences in alcohol consumption between the Back seat and the Front seat, as well as between the Back seat and the Middle seat. However, there is no significant difference in alcohol consumption between the Front seat and the Middle seat.
+
+
+
+
+
 ## Conclusions
+We walked through ANOVA which is more difficult than the T-Test. If there are more than two categories there is more work if the anova has a lower p value we had to run the tukey test and we asked chatGPT for a code which we plugged in and it allowed us to see the differences in the three rows. These plots allowed us to see that there was a significant difference in alcohol consumption between the seats.Based on the information provided, there is a difference in alcohol consumption between the seats. Additionally, the Tukey's HSD test results show significant differences in alcohol consumption between the Back seat and the Front seat, as well as between the Back seat and the Middle seat. However, there is no significant difference in alcohol consumption between the Front seat and the Middle seat.
 
-
+Therefore, based on these statistical analyses, we can conclude that the choice of seat does affect the amount of alcohol consumed.
