@@ -27,20 +27,6 @@ ggplot(davisdata, aes(x = Seat, y = alcohol)) +
 ```
 
 
-
-
-
-
-
-```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
-```
-## Now add in boxplot
-
-```{r}
-basicCN + geom_boxplot()
-```
-  
   
 
 
