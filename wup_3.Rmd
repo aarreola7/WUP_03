@@ -33,6 +33,13 @@ ggplot(davisdata, aes(x = Seat, y = alcohol)) +
 
 ## Numerical Summarys 
 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+
+There is a significant difference. The Back row drinks an average of 9.625000 ounces of alcohol per week.  The front row is consuming an average of 1.803030 ounces of alcohol and the middle is consuming 3.283133 ounces of alcohol per week.There are 83 people sitting in the middle and 33 in the front while there are only 32 sitting in the back. They are consuming about three times more than the other rows.  
+
+
 ## Inferential Tests
 
 ## Conclusions
